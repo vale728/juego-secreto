@@ -10,6 +10,7 @@ let listaNumerosSorteados=[];
 let numeroMaximo=10;
 
 
+
 function asignarTextoElemento(elemento, texto){
     let elementoHTML= document.querySelector(elemento);//no necesita comillas 
     elementoHTML.innerHTML = texto;
@@ -21,6 +22,7 @@ function asignarTextoElemento(elemento, texto){
 function verificarIntento(){
     
     let numeroDeUsuario = parseInt(document.getElementById('valorUsuario').value);//para que no retorne un string hay que ponerle el parseInt
+    let intentosMaximos=4;
     
     console.log(intentos);
     if(numeroDeUsuario===numeroSecreto){//el triple igual da más seguridad de que estamos comparando 2 números
@@ -33,10 +35,16 @@ function verificarIntento(){
         }else{
             asignarTextoElemento('p','El número secreto es mayor');
         }
+
         intentos++;
         limpiarCaja();
+        if(intentos>intentosMaximos){
+            alert(`LLEGO AL MÁXIMO ${intentosMaximos} DE INTENTOS`);
+            reiniciarJuego();               
     }
+}  
     return;
+
 }
 function limpiarCaja(){
     let valorCaja=document.querySelector('#valorUsuario')//utilizamos el id 
